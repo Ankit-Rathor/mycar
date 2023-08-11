@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>name</th>
+    <th>number</th>
+    <th>model</th>
+    <th>company</th>
+    <th>user_id</th> 
+  </tr>
+  <tr>
+    <td><%= @car.name %></td>
+    <td><%= @car.number %></td>
+    <td><%= @car.model%></td>
+    <td><%= @car.company %></td>
+    <td><%= @car.user_id %></td>
+  </tr>
+ <div>   
+  <%= link_to 'Back', { controller: 'users', action: 'index'} %>   
+  </div>   
+</table>

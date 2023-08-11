@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mycar</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    
+  
+  <%# nav bar start%>
+  <div class='container'>
+  <nav class='nav'>
+  <ul class='ul'>
+  <li><%=  link_to "Users", users_path%></li>
+  <li><%=  link_to "Address", addresses_path%></li>
+  <li><%=  link_to "Cars", cars_path%></li>
+  <li><%= link_to "Bookings", bookings_path, method: :get %></li>
+  </ul>
+  </nav>
+  </div>
+  
+  <%# <nav bar end> %>
+
+    <%= yield %>
+  </body>
+</html>

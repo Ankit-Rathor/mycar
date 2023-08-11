@@ -1,0 +1,34 @@
+<html>  
+  <h1 align="center"> crud operations</h1> 
+  <body>  
+    <div class="container">   
+      <div>   
+        <%= link_to 'Add booking', new_booking_path %>   
+      </div>   
+      <br>   
+      <table border="1" width="50%" align="center">   
+        <thead>   
+          <tr>   
+            <th>Issue</th> 
+            <th>Action</th>  
+             
+          </tr>   
+        </thead>   
+        <tbody>   
+          <% @bookings.each do |booking| %>   
+            <tr>   
+              <td ><%= booking.issue %></td>  
+              <td>
+                <div>
+                  <%= button_to 'Show', booking_path(booking), method: 'get'%><br>
+                  <%= button_to 'Edit', edit_booking_path(booking), method: 'get'%><br>
+                  <%= button_to 'Remove', booking_path(booking), method: 'delete', data: { confirm: 'Are you sure?' } %>
+                </div>   
+              </td>   
+            </tr>   
+          <% end %>   
+        </tbody>   
+      </table>   
+    </div>   
+  </body>   
+</html>  

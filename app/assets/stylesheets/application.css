@@ -1,0 +1,13 @@
+.nav{
+    height: 100px;
+    width: 100%;
+    background-color: rgb(228, 199, 199);
+    line-height: 100px;
+}
+ul{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    list-style: none;
+    
+}

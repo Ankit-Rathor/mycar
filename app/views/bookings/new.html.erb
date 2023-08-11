@@ -1,0 +1,26 @@
+<div class="container">   
+  <%= form_for @booking, url: {action: :create} do |f| %>  
+
+   <div>  
+      <label>Issue</label>   
+      <%= f.text_field :issue %>   
+    </div>  
+    <div>  
+      <label>User_id</label>   
+      <%= f.text_field :user_id %>   
+    </div>
+    <div>  
+      <label>Car_id</label>   
+      <%= f.text_field :car_id %>   
+    </div> 
+    <div>  
+      <label>Service_id</label>   
+      <%= f.text_field :service_id %>   
+    </div>   
+</div>   
+    <div>   
+      <%= link_to 'Back', { controller: 'bookings', action: 'index'} %>   
+      <%= f.submit 'Create Booking' %>   
+    </div>   
+  <% end %>   
+    </div>  

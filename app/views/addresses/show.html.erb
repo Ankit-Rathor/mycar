@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>City</th>
+    <th>Location</th>
+    <th>House_no</th>
+    <th>user_id</th>
+  </tr>
+  <tr>
+    <td><%= @address.city %></td>
+    <td><%= @address.location %></td>
+    <td><%= @address.house_no %></td>
+    <td><%= @address.user_id %></td>
+  </tr>
+  <div>   
+    <%= link_to 'Back', { controller: 'addresses', action: 'index'} %>   
+  </div>   
+</table>
