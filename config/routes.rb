@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   # get 'cars/edit'
   # get 'cars/destroy'
 
-  #users routing
+  #users 
+
   # get 'users/index'
   # get 'users/show'
   # get 'users/new'
@@ -36,11 +37,14 @@ Rails.application.routes.draw do
   # get 'users/edit'
   # get 'users/destroy'
   
-  root 'users#index' 
+  root to: 'users#index' 
   resources :sessions, only: [:new, :create, :destroy]
   resources :bookings, only: [:new, :create, :index, :edit, :update, :show, :destroy]
   resources :users, only: [:new, :create, :index, :edit, :update, :show, :destroy]
   resources :cars, only: [:new, :create, :index, :edit, :update, :show, :destroy]
   resources :addresses, only: [:new, :create, :index, :edit, :update, :show, :destroy]
-
+# resources :sessions
+# resources :users
+# resources :cars
+# resources :addresses
 end

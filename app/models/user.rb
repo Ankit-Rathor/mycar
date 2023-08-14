@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_secure_password
+  has_secure_password                     # Default password field
 
 
   has_many :cars

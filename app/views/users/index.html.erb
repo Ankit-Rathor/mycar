@@ -1,6 +1,11 @@
 <html>  
   <h1 align="center"> crud operations</h1> 
-  <body>  
+  <body> 
+  <div class="text-center">
+  <h1>Welcome to Car Srvice </h1>
+  <%= current_user.email %>
+  <p>user sign in <%= user_signed_in? %></p>
+</div> 
     <div class="container">   
       <div>   
         <%= link_to 'Add User', new_user_path %>   

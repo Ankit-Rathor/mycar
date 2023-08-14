@@ -20,10 +20,16 @@
   <li><%=  link_to "Users", users_path%></li>
   <li><%=  link_to "Address", addresses_path%></li>
   <li><%=  link_to "Cars", cars_path%></li>
-  <li><%= link_to "Bookings", bookings_path, method: :get %></li>
   </ul>
   </nav>
   </div>
+   
+   <% if user_signed_in? %>
+  <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
+<% end %>
+   <body>
+    
+
   
   <%# <nav bar end> %>
 
