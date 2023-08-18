@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # get 'admins/index'
+  # get 'admins/show'
+  # get 'admins/new'
+  # get 'admins/create'
+  # get 'admins/edit'
+  # get 'admins/destroy'
   # get 'sessions/new'
   # get 'sessions/create'
   # get 'sessions/destroy'
@@ -36,14 +42,24 @@ Rails.application.routes.draw do
   # get 'users/update'
   # get 'users/edit'
   # get 'users/destroy'
+
+  # resources :users do
+  #   resources :addresses,only: [:new, :create, :index, :edit, :update, :show, :destroy]
+  # end
+  # resources :addresses
+
+  resources :users do
+    resources :addresses, only: [:index, :show, :new, :create, :destroy, :edit, :update]
+  end
   
   root to: 'users#index' 
   resources :sessions, only: [:new, :create, :destroy]
   resources :bookings, only: [:new, :create, :index, :edit, :update, :show, :destroy]
-  resources :users, only: [:new, :create, :index, :edit, :update, :show, :destroy]
+  # resources :users, only: [:new, :create, :index, :edit, :update, :show, :destroy]
   resources :cars, only: [:new, :create, :index, :edit, :update, :show, :destroy]
-  resources :addresses, only: [:new, :create, :index, :edit, :update, :show, :destroy]
-# resources :sessions
+  # resources :addresses, only: [:new, :create, :index, :edit, :update, :show, :destroy]
+  resources :admins,only: [:new,:index,:create,:edit,:show,:destroy]
+  # resources :sessions
 # resources :users
 # resources :cars
 # resources :addresses

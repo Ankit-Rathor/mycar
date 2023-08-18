@@ -13,16 +13,16 @@ class CarsController < ApplicationController
 
   def create
     binding.pry
-    @car = Car.new(car_params)   
+    @car = Car.new(car_params)
+    @user = @car.user_id 
     if @car.save   
-      flash[:notice] = 'car added!'   
-      redirect_to cars_path   
+      flash[:notice] = 'car added!'
+      redirect_to new_booking_path
     else   
       flash[:error] = 'Failed to edit product!'   
       render :new   
     end   
   end   
-
 
   def update
     @car = Car.find(params[:id])   

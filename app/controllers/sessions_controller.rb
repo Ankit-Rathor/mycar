@@ -7,11 +7,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @user = User.find_by(email: params[:user][:email])
     if @user.present? && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to root_path, flash: { success: 'Logged in successfully' }
+      if @user.admin?
+        redirect_to admins_path
+      else
+        redirect_to new_booking_path(current_user.id), flash: { success: 'Logged in successfully' }
+      end
     else
       render :new
     end

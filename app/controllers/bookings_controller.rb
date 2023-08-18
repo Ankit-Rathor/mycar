@@ -8,15 +8,16 @@ class BookingsController < ApplicationController
   end
 
   def new
+    binding.pry
     @booking = Booking.new
+    @car = current_user.cars
   end
 
   def create
-    # binding.pry
-    @booking = Booking.new(booking_params)   
+    @booking = Booking.new(booking_params) 
     if @booking.save   
       flash[:notice] = 'booking added!'   
-      redirect_to bookings_path   
+      redirect_to admin_path   
     else   
       flash[:error] = 'Failed to edit !'   
       render :new   

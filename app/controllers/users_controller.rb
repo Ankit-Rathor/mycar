@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user, only: [:new, :create]
+  skip_before_action :authenticate_user,only: [:new, :create]
 
   def index
     @users = User.all
@@ -9,22 +9,22 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new
+  def new 
     @user = User.new
+    @user.build_address
   end
 
   def create
     @user = User.new(user_params) 
     if @user.save   
       flash[:notice] = 'user added!'   
-      redirect_to root_path   
+      redirect_to new_car_path 
     else   
       flash[:error] = 'Failed to edit product!'   
       render :new   
     end   
   end   
   
-
   def update
     @user = User.find(params[:id])   
     if @user.update(user_params)   
@@ -34,11 +34,11 @@ class UsersController < ApplicationController
       flash[:error] = 'Failed to edit user!'   
       render :edit   
     end   
-  end   
-
+  end
 
   def edit
     @user = User.find(params[:id])
+    @user.address.build if @user.address.empty?
   end
 
   def destroy
@@ -53,8 +53,7 @@ class UsersController < ApplicationController
   end
 
   private
-
   def user_params
-    params.require(:user).permit(:name, :email, :password,:contact, :role)
+    params.require(:user).permit(:name, :email, :password,:contact, :role, address_attributes: [:id, :city,:location,:house_no])
   end
 end

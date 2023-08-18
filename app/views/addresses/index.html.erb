@@ -3,7 +3,7 @@
   <body>  
     <div class="container">   
       <div>   
-        <%= link_to 'Add address', new_address_path %>   
+        <%= link_to 'Add address', new_user_address_path(current_user.id)%>   
       </div>   
       <br>   
       <table border="1" width="50%" align="center">   
@@ -19,9 +19,9 @@
               <td ><%= address.city %></td>   
               <td>
                 <div>
-                  <%= button_to 'Show', address_path(address), method: 'get'%><br>
-                  <%= button_to 'Edit', edit_address_path(address), method: 'get'%><br>
-                  <%= button_to 'Remove', address_path(address), method: 'delete', data: { confirm: 'Are you sure?' } %>
+                  <%= button_to 'Show', user_addresses_path(address), method: 'get'%><br>
+                  <%= button_to 'Edit', edit_user_address_path(address), method: 'get'%><br>
+                  <%= button_to 'Remove', user_address_path(address), method: 'delete', data: { confirm: 'Are you sure?' } %>
                 </div>   
               </td>   
             </tr>   

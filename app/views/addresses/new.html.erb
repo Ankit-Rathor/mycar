@@ -1,5 +1,5 @@
 <div class="container">   
-  <%= form_for @address, url: {action: :create} do |f| %>                 
+  <%= form_for @address, url: {action: :create} do |f| %>
     <div>   
       <label>City</label>   
       <%= f.text_field :city %>   
@@ -11,12 +11,7 @@
     <div>   
       <label>House_no</label>   
       <%= f.text_field :house_no %>        
-    </div> 
-     <div>   
-      <label>User_id</label>   
-      <%= f.text_field :user_id %>        
-    </div> 
-           
+    </div>   
     <div>   
       <%= link_to 'Back', {controller: 'addresses', action: 'index'} %>   
       <%= f.submit 'Create address' %>   

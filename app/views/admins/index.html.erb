@@ -1,0 +1,26 @@
+<h1>Welcome to Admin </h1>
+
+<h1>Booking Data</h1>
+<table>
+<tr>
+<th>Owner Name</th>
+<th>Email</th>
+<th>Contact</th>
+<th> Car_number</th>
+<th>Model</th>
+<th>Car_Name</th>
+<th>Issue</th>
+</tr>
+<% @bookings.each do |book|%>
+<tr>
+<td><%= book.user.name %></td>
+<td><%= book.user.email %></td>
+<td><%= book.user.contact %></td>
+<td><%= book.car.number %></td>
+<td><%= book.car.model %></td>
+<td><%= book.car.name %></td>
+<td><%= book.issue %></td>
+
+</tr>
+<% end %>
+</table>

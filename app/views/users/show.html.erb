@@ -5,13 +5,20 @@
    <th>password</th>
    <th>contact</th>
    <th>role</th>
+   <th>City</th>
+   <th>Location</th>
+   <th>House_number</th>
  </tr>
+
  <tr>
    <td><%= @user.name %></td>
    <td><%= @user.email %></td>
    <td><%= @user.password %></td>
    <td><%= @user.contact %></td>
    <td><%= @user.role %></td>
+   <td><%= @user.address.city %></td>
+   <td><%= @user.address.location %></td>
+   <td><%= @user.address.house_no %></td>
   </tr>
   <div>   
     <%= link_to 'Back', { controller: 'users', action: 'index'} %>   
