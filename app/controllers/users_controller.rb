@@ -15,10 +15,11 @@ class UsersController < ApplicationController
   end
 
   def create
+
     @user = User.new(user_params) 
-    if @user.save   
+    if @user.save
       flash[:notice] = 'user added!'   
-      redirect_to new_car_path 
+      redirect_to new_car_path
     else   
       flash[:error] = 'Failed to edit product!'   
       render :new   
@@ -38,7 +39,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @user.address.build if @user.address.empty?
   end
 
   def destroy
@@ -54,6 +54,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password,:contact, :role, address_attributes: [:id, :city,:location,:house_no])
+    params.require(:user).permit(:name, :email, :password,:contact, :role, address_attributes: [:id, :city,:location,:house_no,:user_id])
   end
 end

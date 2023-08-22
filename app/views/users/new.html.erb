@@ -18,7 +18,7 @@
       <%= f.text_field :contact %>   
     </div>
       
-  <%= f.fields_for :addresses do |a| %>
+  <%= f.fields_for :address do |a| %>
     <div>   
       <label>City</label>   
       <%= a.text_field :city %>   
@@ -36,7 +36,7 @@
 
     <div>   
       <%= f.label  :Role %>
-      <%= f.select :role, ["customer", "manager", "mechanic"] %> 
+      <%= f.select :role, ["customer","mechanic"] %> 
     </div>  
     </div>   
     <div>  

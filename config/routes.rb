@@ -48,16 +48,16 @@ Rails.application.routes.draw do
   # end
   # resources :addresses
 
-  resources :users do
-    resources :addresses, only: [:index, :show, :new, :create, :destroy, :edit, :update]
-  end
+  # resources :users do
+  #   resources :addresses, only: [:index, :show, :new, :create, :destroy, :edit, :update]
+  # end
   
   root to: 'users#index' 
   resources :sessions, only: [:new, :create, :destroy]
   resources :bookings, only: [:new, :create, :index, :edit, :update, :show, :destroy]
-  # resources :users, only: [:new, :create, :index, :edit, :update, :show, :destroy]
+  resources :users, only: [:new, :create, :index, :edit, :update, :show, :destroy]
   resources :cars, only: [:new, :create, :index, :edit, :update, :show, :destroy]
-  # resources :addresses, only: [:new, :create, :index, :edit, :update, :show, :destroy]
+  resources :addresses, only: [:new, :create, :index, :edit, :update, :show, :destroy]
   resources :admins,only: [:new,:index,:create,:edit,:show,:destroy]
   # resources :sessions
 # resources :users

@@ -7,7 +7,7 @@
     <%# <h1 align="center"> crud operations</h1>  %>
   <ul class='ul'>
   <li><%=  link_to "Users", users_path%></li>
-  <li><%=  link_to "Address",  new_user_address_path(current_user.id) %></li>
+  <li><%=  link_to "Address",  new_address_path(current_user.id) %></li>
   <li><%=  link_to "Cars", cars_path%></li>
   <li><%=  link_to "Bookings", bookings_path%></li>
   </ul>
@@ -47,8 +47,6 @@
       
 
       <%# service details end %>
-
-
     </div>   
   </body>   
 </html>  

@@ -12,9 +12,8 @@ class CarsController < ApplicationController
   end
 
   def create
-    binding.pry
     @car = Car.new(car_params)
-    @user = @car.user_id 
+     @user = @car.user_id 
     if @car.save   
       flash[:notice] = 'car added!'
       redirect_to new_booking_path
@@ -35,7 +34,6 @@ class CarsController < ApplicationController
     end   
   end   
 
-
   def edit
     @car = Car.find(params[:id])
   end
@@ -52,7 +50,6 @@ class CarsController < ApplicationController
   end
 
   private
-
   def car_params
     params.require(:car).permit(:name, :number, :model, :company, :user_id)
   end

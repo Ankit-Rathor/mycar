@@ -1,6 +1,13 @@
 class BookingsController < ApplicationController
   def index
     @bookings = Booking.all
+    if current_user.customer?
+      @bookings = Booking.where(user_id: current_user.id)
+    elsif current_user.mechanic?
+      @bookings = Booking.where(mechanic_id: current_user.id)
+    elsif current_user.admin?
+      @bookings= Booking.all
+    end
   end
 
   def show
@@ -8,23 +15,29 @@ class BookingsController < ApplicationController
   end
 
   def new
-    binding.pry
+    # binding.pry
     @booking = Booking.new
-    @car = current_user.cars
+    #  @user = User.new
+    #  @m = current_user
+    # @service = @booking.params[:service_id]
+    
+    #  @car = current_user.cars
+    # @current_user = current_user
+    # @user_car = @current_user.cars.includes(:bookings)
   end
-
+  
   def create
-    @booking = Booking.new(booking_params) 
+    binding.pry
+      @booking = Booking.create(booking_params)
     if @booking.save   
-      flash[:notice] = 'booking added!'   
-      redirect_to admin_path   
+      flash[:notice] = 'booking added!'
+      redirect_to bookings_path         
     else   
       flash[:error] = 'Failed to edit !'   
       render :new   
-    end   
-  end   
-
-
+    end  
+  end 
+  
   def update
     @booking = Booking.find(params[:id])   
     if @booking.update(booking_params)   
@@ -35,7 +48,6 @@ class BookingsController < ApplicationController
       render :edit   
     end   
   end   
-
 
   def edit
     @booking = Booking.find(params[:id])
@@ -51,11 +63,9 @@ class BookingsController < ApplicationController
       render :destroy   
     end   
   end
-
+  
   private
-
   def booking_params
-    params.require(:booking).permit(:issue, :user_id, :service_id, :car_id)
+    params.require(:booking).permit(:issue, :date, :user_id, :service_id, :car_id, :mechanic_id)
   end
-
 end

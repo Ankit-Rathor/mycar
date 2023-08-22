@@ -1,27 +1,29 @@
 <div class="container">  
- <div class='container'>
   <nav class='nav'>
   <h1 align="center">Booking Service</h1>
   </nav>
-  </div>
 
-<%= form_for @booking, url: {action: :create} do |f| %>  
-<div>  
-  <label>Issue</label>   
-    <%= f.text_field :issue %>   
-</div>    
+  <%= form_for @booking,url: {action: :create} do |f| %> 
+   <%= f.collection_select :user_id, User.where(role: 'mechanic'),:id, :name %>
+   <%#= f.collection_select :service_id, Service.all, :id, :details %>
+    <%= f.hidden_field :user_id, value: current_user.id%>            
     <div>  
-      <label>Car_id</label>   
-      <%= f.text_field :car_id %>   
-    </div> 
+      <label>Issue</label>   
+      <%= f.text_area :issue %>   
+    </div><br> 
     <div>  
-      <label>Service_id</label>   
-      <%= f.text_field :service_id %>   
-    </div>   
-</div>   
+      <label>Date</label>   
+      <%= f.text_field :date %>   
+    </div><br> 
+    <div>
+    <% if current_user.cars.present? %>
+      <%= f.collection_select :car_id, current_user.cars, :id, :name %>
+    <% end %>  
+    </div><br>
+
     <div>   
       <%= link_to 'Back', { controller: 'bookings', action: 'index'} %>   
       <%= f.submit 'Create Booking' %>   
     </div>   
   <% end %>   
-    </div>  
+</div>  
