@@ -19,7 +19,7 @@
               <td ><%= address.city %></td>   
               <td>
                 <div>
-                  <%= button_to 'Show', addresses_path(address), method: 'get'%><br>
+                  <%= button_to 'Show', address_path(address), method: 'get'%><br>
                   <%= button_to 'Edit', edit_address_path(address), method: 'get'%><br>
                   <%= button_to 'Remove', address_path(address), method: 'delete', data: { confirm: 'Are you sure?' } %>
                 </div>   

@@ -9,7 +9,7 @@ class AddressesController < ApplicationController
 
   def new
     @address = Address.new
-    # @user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   def create
@@ -17,10 +17,10 @@ class AddressesController < ApplicationController
     @address.user = current_user
     if @address.save   
       flash[:notice] = 'address added!'   
-      #  redirect_to new_car_path(user_id: current_user)
+        redirect_to new_car_path(user_id: current_user)
     else   
       flash[:error] = 'Failed to edit address!'   
-      # render :new  
+      render :new  
     end   
   end     
   
@@ -41,7 +41,7 @@ class AddressesController < ApplicationController
 
   def destroy
     @address = Address.find(params[:id])   
-    if @address.delete   
+    if @address.destroy
       flash[:notice] = 'deleted succesfully'   
       redirect_to addresses_path(current_user.id)  
     else   

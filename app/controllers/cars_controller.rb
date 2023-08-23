@@ -13,7 +13,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-     @user = @car.user_id 
+    #  @user = @car.user_id 
     if @car.save   
       flash[:notice] = 'car added!'
       redirect_to new_booking_path
@@ -40,7 +40,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car = Car.find(params[:id])   
-    if @car.delete   
+    if @car.delete 
       flash[:notice] = 'deleted succesfully'   
       redirect_to cars_path   
     else   

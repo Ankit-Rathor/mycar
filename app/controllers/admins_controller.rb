@@ -12,9 +12,21 @@ class AdminsController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
+  end
+
+
+  def update
+    @user = User.find(params[:id])   
+    if @user.update(user_params)   
+      redirect_to admins_path   
+    else   
+      flash[:error] = 'Failed to edit car!'   
+      render :edit   
+    end  
   end
 
   def edit
@@ -23,7 +35,7 @@ class AdminsController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user.delete   
+    if @user.destroy   
       flash[:notice] = 'deleted succesfully'   
     else   
       flash[:error] = 'Failed to delete !'   

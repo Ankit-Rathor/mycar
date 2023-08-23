@@ -10,6 +10,7 @@
 <th>Model</th>
 <th>Car_Name</th>
 <th>Issue</th>
+<th>Action</th>
 </tr>
 <% @bookings.each do |book|%>
 <tr>
@@ -20,7 +21,11 @@
 <td><%= book.car.model %></td>
 <td><%= book.car.name %></td>
 <td><%= book.issue %></td>
-
+<td>
+  <%= button_to 'Show', admin_path(current_user.id), method: 'get'%><br>
+  <%= button_to 'Edit', edit_admin_path(current_user.id), method: 'get'%><br>
+  <%= button_to 'Remove', admin_path(current_user.id), method: 'delete', data: { confirm: 'Are you sure?' } %> 
+</td> 
 </tr>
 <% end %>
 </table>

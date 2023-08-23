@@ -1,8 +1,7 @@
 
 <div class="container" align="center">   
       
-  <%= form_for @user, url: {action: :update} do |f| %>   
-         
+  <%= form_for @user, url: {action: :update} do |f| %>    
      <h3> Update Data </h3>   
     <div>   
       <label>User Name</label>   
@@ -23,7 +22,7 @@
      <div>   
       <label>Role</label>   
       <%= f.text_field :role %>   
-    </div> <br>       
+    </div> <br>        
     <div>   
       <%= link_to 'Back', { controller: 'users', action: 'index'} %>   
       <%= f.submit 'Update user' %>   

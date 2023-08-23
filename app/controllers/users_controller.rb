@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def create
-
+    
     @user = User.new(user_params) 
     if @user.save
       flash[:notice] = 'user added!'   
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])   
-    if @user.delete   
+    if @user.destroy  
       flash[:notice] = 'deleted succesfully'   
       redirect_to root_path   
     else   

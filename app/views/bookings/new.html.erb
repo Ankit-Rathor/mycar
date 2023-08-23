@@ -2,7 +2,6 @@
   <nav class='nav'>
   <h1 align="center">Booking Service</h1>
   </nav>
-
   <%= form_for @booking,url: {action: :create} do |f| %> 
    <%= f.collection_select :user_id, User.where(role: 'mechanic'),:id, :name %>
    <%#= f.collection_select :service_id, Service.all, :id, :details %>
@@ -13,7 +12,7 @@
     </div><br> 
     <div>  
       <label>Date</label>   
-      <%= f.text_field :date %>   
+      <%= f.date_field :date %>   
     </div><br> 
     <div>
     <% if current_user.cars.present? %>
