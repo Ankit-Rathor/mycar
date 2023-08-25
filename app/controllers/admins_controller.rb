@@ -18,7 +18,6 @@ class AdminsController < ApplicationController
   def create
   end
 
-
   def update
     @user = User.find(params[:id])   
     if @user.update(user_params)   
@@ -34,12 +33,15 @@ class AdminsController < ApplicationController
   end
 
   def destroy
+    binding.pry
     @user = User.find(params[:id])
-    if @user.destroy   
+    @user.bookings.destroy_all
+    if @user.destroy
       flash[:notice] = 'deleted succesfully'   
     else   
       flash[:error] = 'Failed to delete !'   
       render :destroy   
     end 
   end
+  
 end

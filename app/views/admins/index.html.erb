@@ -1,31 +1,38 @@
 <h1>Welcome to Admin </h1>
-
 <h1>Booking Data</h1>
 <table>
-<tr>
-<th>Owner Name</th>
-<th>Email</th>
-<th>Contact</th>
-<th> Car_number</th>
-<th>Model</th>
-<th>Car_Name</th>
-<th>Issue</th>
-<th>Action</th>
-</tr>
-<% @bookings.each do |book|%>
-<tr>
-<td><%= book.user.name %></td>
-<td><%= book.user.email %></td>
-<td><%= book.user.contact %></td>
-<td><%= book.car.number %></td>
-<td><%= book.car.model %></td>
-<td><%= book.car.name %></td>
-<td><%= book.issue %></td>
-<td>
-  <%= button_to 'Show', admin_path(current_user.id), method: 'get'%><br>
-  <%= button_to 'Edit', edit_admin_path(current_user.id), method: 'get'%><br>
-  <%= button_to 'Remove', admin_path(current_user.id), method: 'delete', data: { confirm: 'Are you sure?' } %> 
-</td> 
-</tr>
-<% end %>
+  <tr>
+    <th>Owner Name</th>
+    <th>Email</th>
+    <th>Contact</th>
+    <th> Car_number</th>
+    <th>Model</th>
+    <th>Car_Name</th>
+    <th>Issue</th>
+    <th>City</th>
+    <th>Location</th>
+    <th>Satus</th>
+<%# <th>Action</th> %>
+  </tr>
+  <% @bookings.each do |book|%>
+    <tr>
+      <td><%= book.user.name %></td>
+      <td><%= book.user.email %></td>
+      <td><%= book.user.contact %></td>
+      <td><%= book.car.number %></td>
+      <td><%= book.car.model %></td>
+      <td><%= book.car.name %></td>
+      <td><%= book.issue %></td>
+      <td><%= book.user.address.city %></td>
+      <td><%= book.user.address.location %></td>
+      <td><%= book.status %></td>
+      <td>
+        <%= button_to 'cancel', cancel_path(book.id), method: 'get'%><br>
+        <%= button_to 'confirm', confirm_path(book.id), method: 'get'%><br>
+        <%= button_to 'Approvrd', work_path(book.id), method: 'get'%><br>
+        <%= button_to 'Edit', edit_admin_path(book.user.id), method: 'get' %>
+        <%#= button_to 'Cancel', admin_path(book.user.id), method: 'delete', data: { confirm: 'Are you sure?' } %> 
+      </td> 
+    </tr>
+  <% end %>
 </table>

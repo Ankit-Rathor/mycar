@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       if @user.admin?
         redirect_to admins_path
       else
-        redirect_to new_booking_path(current_user.id), flash: { success: 'Logged in successfully' }
+        redirect_to new_car_path(current_user.id), flash: { success: 'Logged in successfully' }
       end
     else
       render :new

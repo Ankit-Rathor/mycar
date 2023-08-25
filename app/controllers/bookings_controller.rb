@@ -15,15 +15,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-    # binding.pry
     @booking = Booking.new
-    #  @user = User.new
-    #  @m = current_user
-    # @service = @booking.params[:service_id]
-    
-    #  @car = current_user.cars
-    # @current_user = current_user
-    # @user_car = @current_user.cars.includes(:bookings)
   end
   
   def create
@@ -63,7 +55,26 @@ class BookingsController < ApplicationController
       render :destroy   
     end   
   end
+
+  def confirm
+    @booking = Booking.find(params[:format])
+    if @booking.update(status: 'confirmed')
+      redirect_to admins_path
+    else
+      flash[:notice] = "pending"
+    end
+  end
+
+  def cancel
+    @booking = Booking.find(params[:format])
+    @booking.update(status: 'cancelled')
+    redirect_to admins_path
+  end
   
+  def work
+    @booking = Booking.find(params[:format])
+
+  end
   private
   def booking_params
     params.require(:booking).permit(:issue, :date, :user_id, :service_id, :car_id, :mechanic_id)
