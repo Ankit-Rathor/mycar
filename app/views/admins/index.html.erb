@@ -12,7 +12,7 @@
     <th>City</th>
     <th>Location</th>
     <th>Satus</th>
-<%# <th>Action</th> %>
+    <th>Action</th> 
   </tr>
   <% @bookings.each do |book|%>
     <tr>
@@ -29,9 +29,9 @@
       <td>
         <%= button_to 'cancel', cancel_path(book.id), method: 'get'%><br>
         <%= button_to 'confirm', confirm_path(book.id), method: 'get'%><br>
-        <%= button_to 'Approvrd', work_path(book.id), method: 'get'%><br>
+        <%= button_to 'Approvrd', mechanics_path(book.id), method: 'get'%><br>
         <%= button_to 'Edit', edit_admin_path(book.user.id), method: 'get' %>
-        <%#= button_to 'Cancel', admin_path(book.user.id), method: 'delete', data: { confirm: 'Are you sure?' } %> 
+        <%= button_to 'delete', admin_path(book.user.id), method: 'delete', data: { confirm: 'Are you sure?' } %>
       </td> 
     </tr>
   <% end %>

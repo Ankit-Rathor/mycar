@@ -12,13 +12,15 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       if @user.admin?
         redirect_to admins_path
-      else
+      elsif @user.mechanic?
+        redirect_to assinework_path
+      elsif @user.customer?
         redirect_to new_car_path(current_user.id), flash: { success: 'Logged in successfully' }
       end
     else
       render :new
     end
-  end
+end
 
   def destroy
     session[:user_id] = nil

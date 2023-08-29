@@ -1,6 +1,26 @@
 <h1>Assine Work </h1>
-<%# <p>= @booking.user.name</p> %>
-<%# <p>= @booking.user.email</p> %>
+<label>Owner Name</label>:-<%= @booking.user.name %><br><br>
+<label>Email</label>:-<%= @booking.user.email %><br><br>
+<label>Contact</label>:-<%= @booking.user.contact %><br><br>
+<label>City</label>:-<%= @booking.user.address.city %><br><br>
+<label>Location</label>:-<%= @booking.user.address.location %><br><br>
+<label>House_number</label>:-<%= @booking.user.address.house_no %><br><br>
+<label>Car_Name</label>:-<%= @booking.car.name %><br><br>
+<label>Car_number</label>:-<%= @booking.car.number %><br><br>
+<label>Issue</label>:-<%= @booking.issue %><br><br>
+
+<%= form_for @booking,url: {action: :create} do |f| %> 
+  <label>Mechanic Assine</label>:-<%= f.collection_select :user_id, User.where(role: 'mechanic'),:id, :name %>
+<% end %>
+
+
+
+
+
+
+
+
+
 
 
 

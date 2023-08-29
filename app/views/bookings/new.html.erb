@@ -3,9 +3,8 @@
   <h1 align="center">Booking Service</h1>
   </nav>
   <%= form_for @booking,url: {action: :create} do |f| %> 
-   <%= f.collection_select :user_id, User.where(role: 'mechanic'),:id, :name %>
    <%#= f.collection_select :service_id, Service.all, :id, :details %>
-    <%= f.hidden_field :user_id, value: current_user.id%>            
+    <%= f.hidden_field :user_id, value: current_user.id%>
     <div>  
       <label>Issue</label>   
       <%= f.text_area :issue %>   

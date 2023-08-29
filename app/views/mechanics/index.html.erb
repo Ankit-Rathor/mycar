@@ -1,0 +1,18 @@
+<h1>Welcome to Mechanic </h1>
+<h1>Booking Data</h1>
+<table>
+  <tr>
+    <th> Name</th>
+    <th> Email</th>
+    <th> Contact</th>
+    <th>Assine Work</th> 
+  </tr>
+  <% @mech.each do |m|%>
+    <tr>
+      <td><%= m.name %></td>
+      <td><%= m.email %></td>
+      <td><%= m.contact %></td>
+      <td> <%= link_to "Confrime", assinework_path(id: m.id, customer_id: @cust_id) %></td>
+      </tr>
+  <%end %>
+     

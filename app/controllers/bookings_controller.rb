@@ -19,7 +19,6 @@ class BookingsController < ApplicationController
   end
   
   def create
-    #  binding.pry
       @booking = Booking.create(booking_params)
     if @booking.save   
       flash[:notice] = 'booking added!'
