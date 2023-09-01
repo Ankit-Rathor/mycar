@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   def index
+    @bookings = Booking.includes(:mechanic)
     @bookings = Booking.all
     if current_user.customer?
       @bookings = Booking.where(user_id: current_user.id)
@@ -19,7 +20,7 @@ class BookingsController < ApplicationController
   end
   
   def create
-      @booking = Booking.create(booking_params)
+    @booking = Booking.create(booking_params)
     if @booking.save   
       flash[:notice] = 'booking added!'
       redirect_to bookings_path         

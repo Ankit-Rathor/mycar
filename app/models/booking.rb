@@ -3,6 +3,7 @@ class Booking < ApplicationRecord
   enum :status, {confirmed: 'confirmed', pending: 'pending', cancelled: 'cancelled'}, default: :pending
  #Assosation
   belongs_to :user
+  belongs_to :mechanic, class_name:'User', optional: true
   belongs_to :service, optional: true
   belongs_to :car
 end

@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
+    @booking = Booking.new
   end
 
   def create
@@ -13,14 +14,14 @@ class SessionsController < ApplicationController
       if @user.admin?
         redirect_to admins_path
       elsif @user.mechanic?
-        redirect_to assinework_path
+        redirect_to mechanic_booking_path
       elsif @user.customer?
         redirect_to new_car_path(current_user.id), flash: { success: 'Logged in successfully' }
       end
     else
       render :new
     end
-end
+  end
 
   def destroy
     session[:user_id] = nil

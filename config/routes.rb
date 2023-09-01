@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   get '/cancel', to: 'bookings#cancel'
   get '/work', to:   'bookings#work'
   get '/assinework', to:   'mechanics#assinework'
+  get '/mechanic_booking', to:   'mechanics#mechanic_booking'
+  get '/service_details', to:  'mechanics#service_details'
 
 end

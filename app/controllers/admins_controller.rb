@@ -42,6 +42,5 @@ class AdminsController < ApplicationController
       flash[:error] = 'Failed to delete !'   
       render :destroy   
     end 
-  end
-  
+  end  
 end
