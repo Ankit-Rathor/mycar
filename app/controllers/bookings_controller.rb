@@ -1,7 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.includes(:mechanic)
-    @bookings = Booking.all
+    # @bookings = Booking.includes(:mechanic)
     if current_user.customer?
       @bookings = Booking.where(user_id: current_user.id)
     elsif current_user.mechanic?
@@ -21,7 +20,7 @@ class BookingsController < ApplicationController
   
   def create
     @booking = Booking.create(booking_params)
-    if @booking.save   
+    if @booking.save
       flash[:notice] = 'booking added!'
       redirect_to bookings_path         
     else   
@@ -71,10 +70,6 @@ class BookingsController < ApplicationController
     redirect_to admins_path
   end
   
-  def work
-    @booking = Booking.find(params[:format])
-
-  end
   private
   def booking_params
     params.require(:booking).permit(:issue, :date, :user_id, :service_id, :car_id, :mechanic_id)

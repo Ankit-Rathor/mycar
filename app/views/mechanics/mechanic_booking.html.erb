@@ -2,6 +2,7 @@
 <h1>Booking Data</h1>
 <table>
   <tr>
+    <th>Booking Id</th>
     <th>Owner Name</th>
     <th>Email</th>
     <th>Contact</th>
@@ -12,10 +13,12 @@
     <th>Model</th>
     <th>Car_number</th>
     <th>Issue</th>
-    <th>Service_details</th>
+    <th>Create Service</th>
   </tr>
   <% @user_booking.each do |user_booking|%>
+    <%binding.pry%>
     <tr> 
+      <td><%= user_booking.id %></td>
       <td><%= user_booking.user.name %></td>
       <td><%= user_booking.user.email %></td>
       <td><%= user_booking.user.contact %></td>
@@ -26,8 +29,8 @@
       <td><%= user_booking.car.number %></td>
       <td><%= user_booking.car.model %></td>
       <td><%= user_booking.issue %></td>
-      <td> <%= link_to "service_details", service_details_path %></td>
-
+      <%binding.pry%>
+      <td> <%= link_to " Service", new_service_path(booking_id: user_booking.id) %></td>
   <% end %>
     </tr>
 </table>

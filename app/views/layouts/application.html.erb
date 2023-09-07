@@ -9,17 +9,14 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%#= javascript_importmap_tags %>
   </head>
-
   <body>
-  <%# nav bar start%>
-
-   
+  <div class= "nav">
   <% if user_signed_in? %>
     <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
   <% end %>
-   <body>
-  <%# <nav bar end> %>
-
+    <div><li class= "service_history"><%= link_to "Service_History", service_history_path%></li></div>
+  </div>
+  <body>
     <%= yield %>
   </body>
 </html>

@@ -1,18 +1,5 @@
 <html>  
   <body> 
-
-  <div class="container">  
-  <div class='container'>
-  <nav class='nav'>
-    <%# <h1 align="center"> crud operations</h1>  %>
-  <ul class='ul'>
-  <li><%=  link_to "Users", users_path%></li>
-  <li><%=  link_to "Address",  new_address_path(current_user.id) %></li>
-  <li><%=  link_to "Cars", cars_path%></li>
-  <li><%=  link_to "Bookings", bookings_path%></li>
-  </ul>
-  </nav>
-  </div>
   <div class="text-center">
   <h1>Welcome to Car Srvice </h1>
   <%= current_user.email %>

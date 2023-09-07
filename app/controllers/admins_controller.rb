@@ -1,10 +1,10 @@
 class AdminsController < ApplicationController
   def index
-    @users = User.all
-    @cars = Car.all
-    @addresses = Address.all
+    # @users = User.all
+    # @cars = Car.all
+    # @addresses = Address.all
     @bookings = Booking.all
-    @services = Service.all
+    # @services = Service.all
   end
 
   def show

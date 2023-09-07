@@ -14,8 +14,8 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params) 
-    @address.user = current_user
-    if @address.save   
+    # @address.user = current_user
+    if @address.save
       flash[:notice] = 'address added!'   
         redirect_to new_car_path(user_id: current_user)
     else   
@@ -27,12 +27,12 @@ class AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])   
     if @address.update(address_params)   
-      flash[:notice] = 'address updated!'   
+      flash[:notice] = 'address updated!'
       redirect_to addresses_path(current_user.id)  
     else   
       flash[:error] = 'Failed to edit address!'   
-      render :edit   
-    end   
+      render :edit
+    end 
   end 
 
   def edit

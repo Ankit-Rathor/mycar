@@ -1,0 +1,32 @@
+<table>
+  <tr>
+    <th>Owner_ name</th>
+    <th>Email</th>
+    <th>Contact</th>
+    <th>Car_name</th>
+    <th>Car_number</th>
+    <th>Model</th>
+    <th>Date</th>
+    <th>Issue</th>
+    <th>service_name</th>
+    <th>Description</th>
+    <th>Duration</th>
+    <th>Mechanic_Name</th>
+  </tr>
+  <% @bookings_service.each do |b| %>
+    <tr>
+      <td><%= b.user.name %></td>
+      <td><%= b.user.email%></td>
+      <td><%= b.user.contact%></td>
+      <td><%= b.car.name%></td>
+      <td><%= b.car.number%></td>
+      <td><%= b.car.model%></td>
+      <td><%= b.date%></td>
+      <td><%= b.issue %></td>
+      <td><%= b.service.details.dig("name")%></td>
+      <td><%= b.service.details.dig("description")%></td>
+      <td><%= b.service.details.dig("duration")%></td>
+      <td><%= b.mechanic.name%></td>
+    </tr>
+  <% end %>
+</table>
