@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     if @user.present? && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       if @user.admin?
-        redirect_to admins_path
+        redirect_to new_admin_path
       elsif @user.mechanic?
         redirect_to mechanic_booking_path
       elsif @user.customer?

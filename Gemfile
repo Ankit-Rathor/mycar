@@ -42,6 +42,10 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'pry', '~> 0.14.2'
 gem 'bcrypt', :require => 'bcrypt'
+gem "letter_opener", :group => :development
+
+#bootstrap 
+
 # gem 'bootstrap', '~> 5.2.2'
 # gem "bootstrap"
 

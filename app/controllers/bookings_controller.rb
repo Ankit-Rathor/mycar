@@ -58,6 +58,7 @@ class BookingsController < ApplicationController
   def confirm
     @booking = Booking.find(params[:format])
     if @booking.update(status: 'confirmed')
+      BookingConfirmationMailer.booking_confirmation_email(@booking).deliver_now
       redirect_to admins_path
     else
       flash[:notice] = "pending"

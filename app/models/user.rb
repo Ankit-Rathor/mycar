@@ -11,7 +11,7 @@ class User < ApplicationRecord
   # Enum
   enum :role,{customer:0 , admin:1, mechanic:2}
 
-  def user_confirmation_email
-   UserConfirmationMailer.with(user: self).user_confirmation_email.deliver_now
-  end
+  # def user_confirmation_email
+  #  UserConfirmationMailer.with(user: self).user_confirmation_email.deliver_now
+  # end
 end

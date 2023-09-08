@@ -1,7 +1,6 @@
-
-<h1>Booking Data </h1>
+<%= render  'shared/admin_navbar' %>
 <h1>Welcome to Admin </h1>
-<h2><%= current_user.name %></h2>
+<h2>Mr.<%= current_user.name %></h2>
 <table>
   <tr>
     <th>Owner Name</th>
@@ -17,6 +16,7 @@
     <th>Action</th> 
   </tr>
   <% @bookings.each do |book|%>
+
     <tr>
       <td><%= book.user.name %></td>
       <td><%= book.user.email %></td>

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params) 
     # @user = User.find_by(id: user_params[:user_id])
     if @user.save
-      # UserConfirmationMailer.with(user: @user).user_confirmation_email.deliver_now
+       UserConfirmationMailer.user_confirmation_email(@user).deliver_now
       flash[:notice] = 'user added!'   
       redirect_to new_car_path
     else   
@@ -38,6 +38,9 @@ class UsersController < ApplicationController
     end   
   end
 
+   def user_profile
+   end
+   
   def edit
     @user = User.find(params[:id])
   end
@@ -51,6 +54,8 @@ class UsersController < ApplicationController
       flash[:error] = 'Failed to delete !'   
       render :destroy   
     end   
+  end
+  def user_profile
   end
 
   private

@@ -1,5 +1,7 @@
-<h1>Welcome to Mechanic </h1>
-<h1>Booking Data</h1>
+<%= render  'shared/admin_navbar' %>
+<h2>Welcome to Mr. <%= current_user.name%> </h2>
+<h2><%= current_user.email%> </h2>
+<h4>Mechanic List</h4>
 <table>
   <tr>
     <th> Name</th>
