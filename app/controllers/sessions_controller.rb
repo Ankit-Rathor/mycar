@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user, only: [:new, :create]
-  before_action :redirect_if_authenticated, only: [:new, :create]
-
+   skip_before_action :authenticate_user, only: [:new, :create]
+   before_action :redirect_if_authenticated, only: [:new, :create]
   def new
     @user = User.new
     @booking = Booking.new
@@ -16,7 +15,7 @@ class SessionsController < ApplicationController
       elsif @user.mechanic?
         redirect_to mechanic_booking_path
       elsif @user.customer?
-        redirect_to new_car_path(current_user.id), flash: { success: 'Logged in successfully' }
+        redirect_to dash_board_path(current_user.id), flash: { success: 'Logged in successfully' }
       end
     else
       render :new

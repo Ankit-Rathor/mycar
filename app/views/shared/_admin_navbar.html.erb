@@ -1,25 +1,25 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-
   <div class="container-fluid">
     <% if user_signed_in? %>
-    <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
+    <%= button_to "Log Out", session_path(current_user.id), method: :delete %> 
   <% end %>
-   
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
         <li class="nav-item m-4">
           <%= link_to "Service_History", service_history_path%>
         </li>
         <li class="nav-item m-4">
           <%= link_to "Booking", admins_path%>
         </li>
+           <li class="nav-item m-4">
+          <%= link_to "Profile", admin_profile_path %>
+        </li>
       </ul>
-      <span class="navbar-text">
-        Navbar text with an inline element
-      </span>
     </div>
   </div>
 </nav>
+   <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>

@@ -1,28 +1,24 @@
 <div class="container">  
+<%= render  'shared/login_nav'%>
 
-  <%# <div class='container'>
-  <nav class='nav'>
-  <h1 align="">Welocme to  Car Service App</h1>
-  </nav>
-  </div> 
-<div class="text-center"> %>
   <h1>Login Page</h1>
 
   <%= form_with(model: @user, url: sessions_path, local: true) do |f| %>
 
     <!-- Field of sessoin form -->
-    <div class='row'>
+    <div class= >
       <%= f.label :email %>
       <%= f.text_field :email, placeholder: 'Please enter email id' %>
     </div>
-    <div class='row'>
+    <div class='col-md-3'>
       <%= f.label :password %>
       <%= f.password_field :password, placeholder: 'Please enter password' %>
-    </div>
-    <div class='row'> 
+    </div><br>
+    <div class='col-md-3'> 
       <%= f.submit 'Log In' %>
-      <%= link_to "create new user",new_user_path%>
+      <%= link_to "sign Up new user?",new_user_path%>
     </div>
   <% end %>
 </div>
+
 

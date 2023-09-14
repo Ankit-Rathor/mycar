@@ -1,10 +1,10 @@
 class CarsController < ApplicationController
   def index
-    @cars = Car.all
+    @cars = current_user.cars
   end
 
   def show
-    @car = Car.find(params[:id])
+    @car = Car.find_by(id: params[:id])
   end
 
   def new

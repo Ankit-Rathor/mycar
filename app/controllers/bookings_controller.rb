@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   def index
-    # @bookings = Booking.includes(:mechanic)
     if current_user.customer?
       @bookings = Booking.where(user_id: current_user.id)
     elsif current_user.mechanic?
@@ -56,7 +55,7 @@ class BookingsController < ApplicationController
   end
 
   def confirm
-    @booking = Booking.find(params[:format])
+    @booking = Booking.find_by(id: params[:id])
     if @booking.update(status: 'confirmed')
       BookingConfirmationMailer.booking_confirmation_email(@booking).deliver_now
       redirect_to admins_path
@@ -66,7 +65,7 @@ class BookingsController < ApplicationController
   end
 
   def cancel
-    @booking = Booking.find(params[:format])
+    @booking = Booking.find_by(id: params[:id])
     @booking.update(status: 'cancelled')
     redirect_to admins_path
   end

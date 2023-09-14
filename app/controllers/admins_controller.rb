@@ -1,46 +1,23 @@
 class AdminsController < ApplicationController
+  before_action :check_authorization
+  def check_authorization
+    unless current_user.admin?
+      redirect_to users_path ,method: :delete, notice: "You are not authorized to access this profile."
+    end
+  end
+
   def index
-    # @users = User.all
-    # @cars = Car.all
-    # @addresses = Address.all
     @bookings = Booking.all
-    # @services = Service.all
-  end
-
-  def show
-    @user = User.find(params[:id])
-  end
-
-  def new
-    @user = User.new
-  end
-
-  def create
-  end
-
-  def update
-    @user = User.find(params[:id])   
-    if @user.update(user_params)   
-      redirect_to admins_path   
-    else   
-      flash[:error] = 'Failed to edit car!'   
-      render :edit   
-    end  
-  end
-
-  def edit
-    @user = User.find(params[:id])
   end
 
   def destroy
-    binding.pry
-    @user = User.find(params[:id])
-    @user.bookings.destroy_all
-    if @user.destroy
-      flash[:notice] = 'deleted succesfully'   
-    else   
+    @booking = Booking.find_by(id: params[:id])
+    if @booking.destroy
+      flash[:notice] = 'deleted succesfully'
+      redirect_to admins_path 
+    else
       flash[:error] = 'Failed to delete !'   
-      render :destroy   
+      render :destroy
     end 
   end  
 end

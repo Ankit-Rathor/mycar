@@ -14,7 +14,9 @@
     <th>service_name</th>
     <th>Description</th>
     <th>Duration</th>
-    <th>Mechanic_Name</th>
+    <th>Mechanic</th>
+    <th>Status</th>
+    <th>Action</th>
   </tr>
   <% @bookings_service.each do |b| %>
     <tr>
@@ -30,6 +32,8 @@
       <td><%= b.service.details.dig("description")%></td>
       <td><%= b.service.details.dig("duration")%></td>
       <td><%= b.mechanic.name%></td>
-    </tr>
-  <% end %>
+      <td><%= b.service.status %></td>
+      <td><%= link_to 'Cancel', cancel_service_path(id: b.service.id) %></td>
+      <td><%= link_to 'confirm', confirm_service_path(id: b.service.id)%></td>
+<% end %>
 </table>

@@ -1,25 +1,27 @@
+<%= render'/shared/dash_board' %>
+<h2>Please Enter Your Car Details</h1>
 <div class="container">   
   <%= form_for @car, url: {action: :create} do |f| %>  
   <%= f.hidden_field :user_id, value: current_user.id%>            
     <div>   
       <label>car Name</label>   
-      <%= f.text_field :name %>   
-    </div>   
+      <%= f.text_field :name %>  
+    </div><br>
     <div>   
       <label>number</label>   
       <%= f.text_field :number %>   
-    </div>
+    </div><br>
     <div>
       <label>model</label>   
       <%= f.text_field :model%>        
-    </div> 
+    </div> <br>
     <div>   
       <label>company</label>   
       <%= f.text_field :company %>   
-    </div>   
+    </div> <br>  
     <div>   
-      <%= link_to 'Back', { controller: 'cars', action: 'index'} %>   
-      <%= f.submit 'Create car'%>    
-    </div>   
-  <% end %>   
+      <%= f.submit 'Create car'%>  
+      <%= link_to 'skip', new_booking_path %><br>
+    </div><br> 
+  <% end %> 
 </div>  

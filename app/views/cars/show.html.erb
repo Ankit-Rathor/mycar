@@ -4,7 +4,6 @@
     <th>number</th>
     <th>model</th>
     <th>company</th>
-    <th>user_id</th> 
   </tr>
   <tr>
     <td><%= @car.name %></td>
@@ -13,6 +12,6 @@
     <td><%= @car.company %></td>
   </tr>
  <div>   
-  <%= link_to 'Back', { controller: 'users', action: 'index'} %>   
+  <%= link_to 'Back', { controller: 'cars', action: 'index'} %>   
   </div>   
 </table>

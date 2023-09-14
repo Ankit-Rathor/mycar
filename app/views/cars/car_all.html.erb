@@ -1,0 +1,9 @@
+<table>
+<tr>
+<th>Cars</th>
+</tr>
+<tr>
+
+ <td> <%= select_tag "car", options_from_collection_for_select(@cars, 'id', 'name') %></td>
+  </tr>
+</table>

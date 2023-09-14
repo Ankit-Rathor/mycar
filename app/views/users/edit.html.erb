@@ -1,6 +1,5 @@
-
-<div class="container" align="center">   
-      
+<%= render'/shared/dash_board' %>
+<div class="container" align="center">       
   <%= form_for @user, url: {action: :update} do |f| %>    
      <h3> Update Data </h3>   
     <div>   
@@ -24,7 +23,6 @@
       <%= f.text_field :role %>   
     </div> <br>        
     <div>   
-      <%= link_to 'Back', { controller: 'users', action: 'index'} %>   
       <%= f.submit 'Update user' %>   
     </div>   
   <% end %>   

@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user,only: [:new, :create]
+  before_action :check_authorization
+  
+  def check_authorization
+    unless current_user.customer?
+      redirect_to admins_path ,method: :delete, notice: "You are not authorized to access this profile."
+    end
+  end
 
   def index
     @users = User.all
@@ -13,10 +20,9 @@ class UsersController < ApplicationController
     @user = User.new
     @user.build_address
   end
-
+p
   def create
     @user = User.new(user_params) 
-    # @user = User.find_by(id: user_params[:user_id])
     if @user.save
        UserConfirmationMailer.user_confirmation_email(@user).deliver_now
       flash[:notice] = 'user added!'   
@@ -31,16 +37,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])   
     if @user.update(user_params)   
       flash[:notice] = 'user updated!'   
-      redirect_to root_path   
+      redirect_to user_path  
     else   
       flash[:error] = 'Failed to edit user!'   
       render :edit   
     end   
   end
 
-   def user_profile
-   end
-   
   def edit
     @user = User.find(params[:id])
   end
@@ -54,8 +57,6 @@ class UsersController < ApplicationController
       flash[:error] = 'Failed to delete !'   
       render :destroy   
     end   
-  end
-  def user_profile
   end
 
   private

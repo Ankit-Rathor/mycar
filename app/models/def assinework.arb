@@ -1,6 +1,5 @@
   def assinework
     role = current_user.role
-    binding.pry
     case role
     when "admin"
       @mechanic_user = User.find_by(id: params[:mechanic_id])
@@ -9,10 +8,7 @@
       @bookings = Booking.all
     when "mechanic"
       @mechanic_user = User.find_by(id: current_user.id)
-      # assign_user = User.find(@user_mechanic.id)
       assign_user = User.find_by_mechanic_id(@mechanic_user.id)
-
-      # assign_work = Booking.find(assign_user).update(user_id: assign_user.id)
       @bookings = @mechanic_user.bookings
     end
   end

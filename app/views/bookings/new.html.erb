@@ -1,7 +1,6 @@
+<%= render'/shared/dash_board' %>
 <div class="container">  
-  <nav class='nav'>
-  <h1 align="center">Booking Service</h1>
-  </nav>
+ <h2>Enter Your Booking Details</h2>
   <%= form_for @booking,url: {action: :create} do |f| %> 
    <%#= f.collection_select :service_id, Service.all, :id, :details %>
     <%= f.hidden_field :user_id, value: current_user.id%>
@@ -18,9 +17,7 @@
       <%= f.collection_select :car_id, current_user.cars, :id, :name %>
     <% end %>  
     </div><br>
-
     <div>   
-      <%= link_to 'Back', { controller: 'bookings', action: 'index'} %>   
       <%= f.submit 'Create Booking' %>   
     </div>   
   <% end %>   
