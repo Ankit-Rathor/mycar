@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user,only: [:new, :create]
-  before_action :check_authorization
-  
-  def check_authorization
+   before_action :check_authenticate_user,only: [:index,:show,:update,:edit,:update,:destroy]
+   # before_action :check_authenticate_user,only: [:new, :create]
+
+  def check_authenticate_user
     unless current_user.customer?
       redirect_to admins_path ,method: :delete, notice: "You are not authorized to access this profile."
     end
@@ -20,15 +21,15 @@ class UsersController < ApplicationController
     @user = User.new
     @user.build_address
   end
-p
+
   def create
     @user = User.new(user_params) 
     if @user.save
        UserConfirmationMailer.user_confirmation_email(@user).deliver_now
-      flash[:notice] = 'user added!'   
+      flash[:notice] = 'user added sucesfully!'
       redirect_to new_car_path
     else   
-      flash[:error] = 'Failed to edit product!'   
+      flash[:error] = 'error'
       render :new   
     end   
   end   

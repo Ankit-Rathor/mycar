@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   get '/view',to: 'mechanics#view'
   get '/admin_profile',to: 'admins#admin_profile'
   get '/admin_navbar',to: 'admins#admin_navbar'
+  get '/error',to: 'users#error'
+
 end

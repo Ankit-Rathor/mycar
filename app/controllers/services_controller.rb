@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController 
   def index
-    @services = Service.all # show all create services 
+    @services = Service.all # show all services
   end
   
   def new
@@ -35,15 +35,6 @@ class ServicesController < ApplicationController
 
   def service_history
     @bookings_service = Booking.joins(:service)
-  end
-
-  def edit
-  end
-
-  def destroy
-  end
-
-  def show
   end
 
   private

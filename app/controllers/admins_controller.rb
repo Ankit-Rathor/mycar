@@ -1,8 +1,9 @@
 class AdminsController < ApplicationController
-  before_action :check_authorization
-  def check_authorization
+  before_action :check_authenticate_user
+
+  def check_authenticate_user
     unless current_user.admin?
-      redirect_to users_path ,method: :delete, notice: "You are not authorized to access this profile."
+      redirect_to error_path ,method: :delete, notice: "You are not authorized to access this profile."
     end
   end
 

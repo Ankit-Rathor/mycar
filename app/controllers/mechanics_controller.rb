@@ -1,11 +1,13 @@
 class MechanicsController < ApplicationController
+   before_action :check_authenticate_user
 
-  before_action :check_authorization
-  def check_authorization
-    unless current_user.mechanic?
-      redirect_to users_path ,method: :delete, notice: "You are not authorized to access this profile."
-    end
-  end
+   def check_authenticate_user
+    binding.pry
+     unless current_user.mechanic?
+       redirect_to error_path ,method: :delete, notice: "You are not authorized to access this profile."
+     end
+   end
+
   def index
     @mech = User.where(role:'mechanic')
   end
@@ -22,3 +24,4 @@ class MechanicsController < ApplicationController
     @user_booking = Booking.where(mechanic_id: @mechanic_user.id)
   end
 end
+
