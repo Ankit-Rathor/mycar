@@ -1,7 +1,6 @@
 <h1>create Services </h1>
-
+  <% binding.pry %>
 <%= form_with model: @service, local: true do |form| %>
-<%binding.pry%>
   <%= form.hidden_field :booking_id, value: params[:booking_id]%>
   <%= form.label :name  %> :
   <%= form.text_field 'details[name]', placeholder: 'name' %><br>
@@ -9,5 +8,5 @@
   <%= form.text_area 'details[description]', placeholder: 'description' %><br>
   <%= form.label :duration %> :
   <%= form.text_field 'details[duration]', placeholder: 'duration' %><br>
-  <%= form.submit %>
+  <%= form.submit  %>
 <% end %> 

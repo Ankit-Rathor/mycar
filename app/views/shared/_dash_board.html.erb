@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light  sticky-top bg-dark">
 
   <div class="container-fluid">
     <% if user_signed_in? %>
@@ -7,6 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <% if current_user.customer? %>
+          <li class="nav-item m-4">
+          <%= link_to "Home",  dash_board_path(current_user.id)%>
+        </li>
         <li class="nav-item m-4">
           <%= link_to "Booking", new_car_path %>
         </li>

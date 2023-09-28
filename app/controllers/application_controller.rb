@@ -1,4 +1,4 @@
-  class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :user_signed_in?
   before_action :authenticate_user
@@ -18,5 +18,4 @@
   def redirect_if_authenticated
     redirect_to root_path, flash: { info: 'You are already logged in.'} if user_signed_in?
   end
-
 end

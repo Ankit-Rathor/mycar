@@ -12,9 +12,8 @@ class CarsController < ApplicationController
   end
 
   def create
-    @car = Car.new(car_params)
-    #  @user = @car.user_id 
-    if @car.save   
+    car = Car.new(car_params)
+    if car.save
       flash[:notice] = 'car added!'
       redirect_to new_booking_path
     else   
@@ -24,8 +23,8 @@ class CarsController < ApplicationController
   end   
 
   def update
-    @car = Car.find(params[:id])   
-    if @car.update(car_params)   
+    car = Car.find_by(id: params[:id])
+    if car.update(car_params)
       flash[:notice] = 'car updated!'   
       redirect_to cars_path   
     else   
@@ -35,18 +34,19 @@ class CarsController < ApplicationController
   end   
 
   def edit
-    @car = Car.find(params[:id])
+    @car = Car.find_by(id: params[:id])
   end
 
   def destroy
-    @car = Car.find(params[:id])
-    @car.bookings.destroy_all   
-    if @car.delete 
+    binding.pry
+    car = Car.find_by(id: params[:id])
+    # car.bookings.destroy_all
+    if car.destroy
       flash[:notice] = 'deleted succesfully'   
       redirect_to cars_path   
     else   
       flash[:error] = 'Failed to delete !'   
-      render :destroy   
+      render :destroy
     end   
   end
 

@@ -1,6 +1,7 @@
 <%= render'/shared/dash_board' %>
-<div class="container" align="center">       
-  <%= form_for @user, url: {action: :update} do |f| %>    
+<div class="container" align="center">
+<% binding.pry %>
+  <%= form_for @user, url: {action: :update} do |f| %>
      <h3> Update Data </h3>   
     <div>   
       <label>User Name</label>   

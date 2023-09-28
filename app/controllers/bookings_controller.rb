@@ -18,8 +18,8 @@ class BookingsController < ApplicationController
   end
   
   def create
-    @booking = Booking.create(booking_params)
-    if @booking.save
+    booking = Booking.new(booking_params)
+    if booking.save
       flash[:notice] = 'booking added!'
       redirect_to bookings_path         
     else   
@@ -29,8 +29,8 @@ class BookingsController < ApplicationController
   end 
   
   def update
-    @booking = Booking.find(params[:id])   
-    if @booking.update(booking_params)   
+    booking = Booking.find(params[:id])
+    if booking.update(booking_params)
       flash[:notice] = 'booking updated!'   
       redirect_to bookings_path   
     else   
@@ -44,8 +44,8 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking = Booking.find(params[:id])   
-    if @booking.delete   
+    booking = Booking.find(params[:id])
+    if booking.delete
       flash[:notice] = 'deleted succesfully'   
       redirect_to bookings_path   
     else   
@@ -55,9 +55,9 @@ class BookingsController < ApplicationController
   end
 
   def confirm
-    @booking = Booking.find_by(id: params[:id])
-    if @booking.update(status: 'confirmed')
-      BookingConfirmationMailer.booking_confirmation_email(@booking).deliver_now
+    booking = Booking.find_by(id: params[:id])
+    if booking.update(status: 'confirmed')
+      BookingConfirmationMailer.booking_confirmation_email(booking).deliver_now
       redirect_to admins_path
     else
       flash[:notice] = "pending"
@@ -65,9 +65,9 @@ class BookingsController < ApplicationController
   end
 
   def cancel
-    @booking = Booking.find_by(id: params[:id])
-    @booking.update(status: 'cancelled')
-    redirect_to admins_path
+    booking = Booking.find_by(id: params[:id])
+    booking.update(status: 'cancelled')
+    redirect_to admins_path 
   end
   
   private

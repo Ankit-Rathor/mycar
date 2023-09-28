@@ -1,9 +1,10 @@
-class AdminsController < ApplicationController
-  before_action :check_authenticate_user
+ class AdminsController < ApplicationController
+  before_action :check_authorization,only: [:index,:show,:destroy]
+  # before_action :check_authorization
 
-  def check_authenticate_user
-    unless current_user.admin?
-      redirect_to error_path ,method: :delete, notice: "You are not authorized to access this profile."
+  def check_authorization
+    unless current_user.admin? #mechanics
+      redirect_to mechanic_booking_path, notice: "You are not authorized to access this profile."
     end
   end
 

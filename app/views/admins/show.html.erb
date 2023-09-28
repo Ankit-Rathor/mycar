@@ -1,6 +1,0 @@
-<h1>Assine Work </h1>
-<%= form_with model: @booking, url: bookings_path, method: :get, autocomplete: :on, local: true do |f| %>
-  <label>OwnerName</label><%= f.text_field :user.name %><br>
-  <label>Date</label><%= f.date_field :due_date %><br>
-  <%= f.submit %>
-<% end %>

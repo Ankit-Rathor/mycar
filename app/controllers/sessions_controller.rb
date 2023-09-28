@@ -1,24 +1,24 @@
 class SessionsController < ApplicationController
-   skip_before_action :authenticate_user, only: [:new, :create]
-   before_action :redirect_if_authenticated, only: [:new, :create]
+  skip_before_action :authenticate_user, only: [:new, :create]
+  before_action :redirect_if_authenticated, only: [:create]
+
   def new
     @user = User.new
-    @booking = Booking.new
   end
 
   def create
-    @user = User.find_by(email: params[:user][:email])
-    if @user.present? && @user.authenticate(params[:user][:password])
-      session[:user_id] = @user.id
-      if @user.admin?
-        redirect_to new_admin_path
-      elsif @user.mechanic?
-        redirect_to mechanic_booking_path
-      elsif @user.customer?
-        redirect_to dash_board_path(current_user.id), flash: { success: 'Logged in successfully' }
+    user = User.find_by(email: params[:user][:email])
+    if user.present? && user.authenticate(params[:user][:password])
+      session[:user_id] = user.id
+      if user.admin?
+        redirect_to new_admin_path, flash: { success: 'Logged in successfully' }
+      elsif user.mechanic?
+        redirect_to mechanic_booking_path, flash: { success: 'Logged in successfully' }
+      elsif user.customer?
+        redirect_to dash_board_path, flash: { success: 'Logged in successfully' }
       end
     else
-      render :new
+     render :new
     end
   end
 

@@ -22,7 +22,7 @@
                 <div>
                   <%= button_to 'Show', booking_path(booking), method: 'get'%><br>
                   <%= button_to 'Edit', edit_booking_path(booking), method: 'get'%><br>
-                  <%= button_to 'Remove', booking_path(booking), method: 'delete', data: { confirm: 'Are you sure?' } %>
+                  <%= button_to 'Remove', booking_path(booking), method: :delete, from: {data: {turbo_confirm: 'Are you sure?' }} %>
                 </div>   
               </td>   
             </tr>   

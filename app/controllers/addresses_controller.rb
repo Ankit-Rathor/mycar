@@ -1,10 +1,27 @@
 class AddressesController < ApplicationController
+
+  before_action :address_authorization
+
+  def address_authorization
+    if current_user.admin?
+      redirect_to admins_path
+      unless current_user.admin?
+        redirect_to dash_board_path
+      end
+    end
+  end
+
   def index
     @addresses = Address.all
+    if current_user.mechanic?
+      redirect_to mechanic_booking_path
+    elsif current_user.customer?
+      redirect_to dash_board_path
+    end
   end
 
   def show
-    @address = Address.find(params[:id])
+    @address = Address.find_by(id: params[:id])
   end
 
   def new
@@ -13,9 +30,8 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.new(address_params) 
-    # @address.user = current_user
-    if @address.save
+    address = Address.new(address_params)
+    if address.save
       flash[:notice] = 'address added!'   
         redirect_to new_car_path(user_id: current_user)
     else   
@@ -25,8 +41,8 @@ class AddressesController < ApplicationController
   end     
   
   def update
-    @address = Address.find(params[:id])   
-    if @address.update(address_params)   
+    address = Address.find(params[:id])
+    if address.update(address_params)
       flash[:notice] = 'address updated!'
       redirect_to addresses_path(current_user.id)  
     else   
@@ -40,8 +56,8 @@ class AddressesController < ApplicationController
   end
 
   def destroy
-    @address = Address.find(params[:id])   
-    if @address.destroy
+    address = Address.find(params[:id])
+    if address.destroy
       flash[:notice] = 'deleted succesfully'   
       redirect_to addresses_path(current_user.id)  
     else   

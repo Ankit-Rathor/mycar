@@ -16,7 +16,7 @@
         <tbody>   
           <% @addresses.each do |address| %>   
             <tr>   
-              <td ><%= address.city %></td>   
+              <td><%= address.city %></td>
               <td>
                 <div>
                   <%= button_to 'Show', address_path(address), method: 'get'%><br>

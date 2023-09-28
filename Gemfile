@@ -46,10 +46,17 @@ gem "letter_opener", :group => :development
 
 #bootstrap 
 
-# gem 'bootstrap', '~> 5.2.2'
+#  gem 'bootstrap', '~> 5.2.2'
 # gem "bootstrap"
 
  gem "sassc-rails"
+
+ # Athentication
+ gem 'cancancan'
+
+ #turbo
+ gem 'hotwire-rails'
+ gem 'turbo-rails'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

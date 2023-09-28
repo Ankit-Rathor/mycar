@@ -9,12 +9,11 @@
     <th>Acction</th>
   </tr>
   <% @mech.each do |m|%>
-  
-    <tr>
-      <td><%= m.name %></td>
-       <td><%= m.email %></td>
-      <td><%= m.contact %></td>
-      <td> <%= link_to "assinework", assinework_path(mechanic_id: m.id, booking_id: params[:booking_id]) %></td>
-      </tr>
-  <%end %>
-     
+  <tr>
+    <td><%= m.name %></td>
+    <td><%= m.email %></td>
+    <td><%= m.contact %></td>
+    <td> <%= link_to "assinework", assinework_path(mechanic_id: m.id, booking_id: params[:booking_id]) %></td>
+    </tr>
+  <% end %>
+</table>

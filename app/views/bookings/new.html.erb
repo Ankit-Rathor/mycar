@@ -2,7 +2,6 @@
 <div class="container">  
  <h2>Enter Your Booking Details</h2>
   <%= form_for @booking,url: {action: :create} do |f| %> 
-   <%#= f.collection_select :service_id, Service.all, :id, :details %>
     <%= f.hidden_field :user_id, value: current_user.id%>
     <div>  
       <label>Issue</label>   

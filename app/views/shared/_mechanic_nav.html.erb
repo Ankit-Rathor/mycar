@@ -4,6 +4,7 @@
     <li class="nav-item m-4">
           <%= link_to "profile",  user_path(current_user.id)%>
         </li>
+
     <% if user_signed_in? %>
     <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
   <% end %>

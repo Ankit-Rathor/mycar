@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'users#index' 
+  root to: 'sessions#new'
   resources :mechanics, only: [:new, :create, :destroy,:index,:edit,:update, :show]
   resources :sessions, only: [:new, :create, :destroy]
   resources :bookings, only: [:new, :create, :index, :edit, :update, :show, :destroy]
@@ -25,5 +25,4 @@ Rails.application.routes.draw do
   get '/admin_profile',to: 'admins#admin_profile'
   get '/admin_navbar',to: 'admins#admin_navbar'
   get '/error',to: 'users#error'
-
 end
