@@ -1,32 +1,32 @@
 <%= render'/shared/dash_board' %>
 <html>  
-  <h1 align="center">Car List <br> Name:-<%= current_user.name %></h1> 
   <body>  
     <div class="container">   
       <div>   
         <%= link_to 'Add car', new_car_path %>   
       </div>   
       <br>   
-      <table border="1" width="50%" align="center">   
-        <thead>   
+      <table class="table">
+        <thead class="thead bg-danger">
           <tr>   
-            <th>Name</th>   
-            <th>Number</th>   
-            <th>Action</th>   
+            <th scope="col">Name</th>
+            <th scope="col">Number</th>
+            <th scope="col">Model</th>
+            <th scope="col">Company</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
           </tr>   
         </thead>   
         <tbody>   
           <% @cars.each do |car| %>   
             <tr>   
               <td ><%= car.name %></td>   
-              <td><%= car.number %></td>    
-              <td>
-                <div>
-                  <%= button_to 'Show', car_path(car), method: 'get'%><br>
-                  <%= button_to 'Edit', edit_car_path(car), method: 'get'%><br>
-                  <%= button_to 'Remove', car_path(car), method: 'delete', data: { confirm: 'Are you sure?' } %>
-                </div>   
-              </td>   
+              <td><%= car.number %></td>
+              <td><%= car.model %></td>
+              <td><%= car.company %></td>
+              <td><%= button_to 'Edit', edit_car_path(car), method: 'get'%></td>
+              <td><%= button_to 'Remove', car_path(car), method: 'delete', data: { confirm: 'Are you sure?' } %>
+              </td>
             </tr>   
           <% end %>   
         </tbody>   

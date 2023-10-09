@@ -47,6 +47,7 @@ class ServicesController < ApplicationController
 
   def service_history
     @bookings_service = Booking.joins(:service)
+
     if current_user.mechanic?
       redirect_to mechanic_booking_path
     end

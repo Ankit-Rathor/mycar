@@ -1,18 +1,20 @@
 <div class="container-fluid">
 <%= render  'shared/login_nav'%>
-
+ <% flash.each do |type, msg| %>
+  <div class="alert alert-<%= type %>">
+    <%= msg %>
+  </div>
+<% end %>
   <h1>Login Page</h1>
-
-  <%= form_with(model: @user, url: sessions_path, local: true, method: :post) do |f| %>
-
+  <%= form_with( url: sessions_path, local: true) do |f| %>
     <!-- Field of sessoin form -->
     <div class= >
       <%= f.label :email %>
-      <%= f.text_field :email, placeholder: 'Please enter email id' %>
+      <%= f.text_field :email,required: true,placeholder: 'Please enter email id' %>
     </div>
     <div class='col-md-3'>
-      <%= f.label :password %>
-      <%= f.password_field :password, placeholder: 'Please enter password' %>
+      <%= f.label :password%>
+      <%= f.password_field :password,required: true ,placeholder: 'Please enter password' %>
     </div><br>
     <div class='col-md-3'> 
       <%= f.submit 'Log In' %>
@@ -20,5 +22,3 @@
       <%= link_to "sign Up new user?",new_user_path %>
   <% end %>
 </div>
-
-

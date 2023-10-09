@@ -7,26 +7,37 @@
         <%= link_to 'Add booking', new_booking_path %>   
       </div>   
       <br>   
-      <table border="1" width="50%" align="center">   
-        <thead>   
-          <tr>   
-            <th>Issue</th> 
-            <th>Action</th>    
+      <table class="table">
+        <thead class="thead bg-danger">
+          <tr>
+            <th scope="col">Owner_name</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Email_id</th>
+            <th scope="col">Car_name</th>
+            <th scope="col">Car_number</th>
+            <th scope="col">Model</th>
+            <th scope="col">Issue</th>
+            <th scope="col">Status</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
           </tr>   
         </thead>   
         <tbody>   
           <% @bookings.each do |booking| %>   
-            <tr>   
-              <td ><%= booking.issue %></td>  
-              <td>
-                <div>
-                  <%= button_to 'Show', booking_path(booking), method: 'get'%><br>
-                  <%= button_to 'Edit', edit_booking_path(booking), method: 'get'%><br>
-                  <%= button_to 'Remove', booking_path(booking), method: :delete, from: {data: {turbo_confirm: 'Are you sure?' }} %>
-                </div>   
-              </td>   
+            <tr>
+              <td ><%= booking.user.name %></td>
+              <td ><%= booking.user.contact %></td>
+              <td ><%= booking.user.email %></td>
+              <td ><%= booking.car.name %></td>
+              <td ><%= booking.car.number %></td>
+              <td ><%= booking.car.model %></td>
+              <td ><%= booking.issue %></td>
+              <td ><%= booking.status %></td>
+              <td> <%= button_to 'Edit', edit_booking_path(booking), method: 'get'%></td>
+              <td> <%= button_to 'Remove', booking_path(booking), method: :delete, from: {data: {turbo_confirm: 'Are you sure?' }} %>
+              </td>
             </tr>   
-          <% end %>   
+          <% end %>
         </tbody>   
       </table>   
     </div>   

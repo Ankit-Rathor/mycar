@@ -38,9 +38,7 @@ class CarsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     car = Car.find_by(id: params[:id])
-    # car.bookings.destroy_all
     if car.destroy
       flash[:notice] = 'deleted succesfully'   
       redirect_to cars_path   

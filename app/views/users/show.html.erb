@@ -20,6 +20,7 @@
             <div class="d-flex justify-content-center mb-2">
               <td><%= link_to 'Edit_Profile', edit_user_path(current_user), method: 'get'%><td>
             </div>
+          <td><%= button_to 'Delete', user_path(current_user), method: 'delete', data: { confirm: 'Are you sure?'} %></td>
           </div>
         </div>
       </div>

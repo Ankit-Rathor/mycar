@@ -1,19 +1,20 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user,only: [:new, :create]
+  # before_action :redirect_if_authenticated, only: [:create]
+  skip_before_action :authenticate_user,only: [:new,:create]
   before_action :check_authorization
-  # skip_before_action :check_authorization, only: [:new,:create,:update,:edit,:show]
+  skip_before_action :check_authorization, only: [:update,:edit]
 
   def check_authorization
-    binding.pry
-    if current_user.present? && current_user.customer? #admin
-      # redirect_to admins_path , notice: "You are not authorized to access this profile."
+    if current_user.present?
     end
   end
 
   def index
     @users = User.all
-    if current_user.customer?
-      redirect_to dash_board_path
+    if current_user.mechanic?
+      redirect_to mechanic_booking_path
+    elsif current_user.admin?
+      redirect_to admins_path
     end
   end
 
@@ -27,13 +28,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
-      UserConfirmationMailer.user_confirmation_email(user).deliver_now
+    @user = User.new(user_params)
+    if @user.save
+      UserConfirmationMailer.user_confirmation_email(@user).deliver_now
       flash[:notice] = 'user added sucesfully!'
       redirect_to new_car_path
     else
-      flash[:error] = 'error'
+      flash[:notice] = 'Invalid password'
       render :new
     end
   end

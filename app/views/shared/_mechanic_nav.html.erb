@@ -1,12 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
   <div class="container-fluid">
-  <h1>Welcome to mechanic</h1>
-    <li class="nav-item m-4">
-          <%= link_to "profile",  user_path(current_user.id)%>
-        </li>
-
+    <h1>Welcome to mechanic</h1>
+      <li class="nav-item m-4">
+        <%= link_to "profile",  user_path(current_user.id)%>
+      </li>
+      <li class="nav-item m-4">
+        <%= link_to "cars",  cars_path(current_user.id)%>
+      </li>
     <% if user_signed_in? %>
-    <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
-  <% end %>
+      <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
+    <% end %>
   </div>
 </nav>

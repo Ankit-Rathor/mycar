@@ -1,4 +1,15 @@
 class BookingsController < ApplicationController
+  before_action :booking_authorization
+  skip_before_action :booking_authorization,only: [:confirm,:cancel]
+
+  def booking_authorization
+    if current_user.admin?
+      redirect_to admins_path
+    elsif current_user.mechanic?
+      redirect_to mechanic_booking_path
+    end
+  end
+
   def index
     if current_user.customer?
       @bookings = Booking.where(user_id: current_user.id)

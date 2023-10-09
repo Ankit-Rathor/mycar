@@ -6,7 +6,7 @@
      [1;34m6[0m:   </div>
      [1;34m7[0m: 
      [1;34m8[0m: <%= form_for @booking, url: {action: :create} do |f| %>  
- =>  [1;34m9[0m: <%binding.pry%>
+ =>  [1;34m9[0m: <% %>
     [1;34m10[0m: <%= f.hidden_field :user_id, value: current_user.id%> 
     [1;34m11[0m: <%= f.hidden_field :service_id, value: service.id%>  
     [1;34m12[0m: <%= f.hidden_field :car_id, value: car.id%> 

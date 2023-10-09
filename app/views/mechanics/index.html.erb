@@ -3,17 +3,15 @@
 <table>
   <tr>
     <th> Name</th>
-    <th> Email</th>
-    <th> Contact</th>
-    <th>Assine Work</th> 
-    <th>Acction</th>
+    <th>Assine Work</th>
+    <th>mechanic_view</th>
   </tr>
   <% @mech.each do |m|%>
   <tr>
     <td><%= m.name %></td>
-    <td><%= m.email %></td>
-    <td><%= m.contact %></td>
-    <td> <%= link_to "assinework", assinework_path(mechanic_id: m.id, booking_id: params[:booking_id]) %></td>
+    <td> <%= link_to "assinework", assinework_path(mechanic_id: m, booking_id:  @booking_mech_id) %></td>
+    <td> <%= link_to "mechanic_view", mechanic_path(m, booking_id: @booking_mech_id) %></td>
     </tr>
   <% end %>
 </table>
+

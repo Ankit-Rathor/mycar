@@ -7,6 +7,7 @@
     <th>Number</th>
     <th>Model</th>
     <th>Issue</th>
+    <th>Status</th>
   </tr>
   <tr>
     <td><%= @booking.user.name%></td>
@@ -16,6 +17,7 @@
     <td><%= @booking.car.number%></td>
     <td><%= @booking.car.model%></td>
     <td><%= @booking.issue%></td>
+    <td><%= @booking.status%></td>
   </tr>
   <div>   
     <%= link_to 'Back', { controller: 'bookings', action: 'index'} %>   

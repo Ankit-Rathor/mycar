@@ -35,5 +35,6 @@
       <td><%= b.service.status %></td>
       <td><%= link_to 'Cancel', cancel_service_path(id: b.service.id) %></td>
       <td><%= link_to 'confirm', confirm_service_path(id: b.service.id)%></td>
-<% end %>
+    </tr>
+  <% end %>
 </table>
